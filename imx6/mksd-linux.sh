@@ -26,14 +26,13 @@ DRIVE=$1
 
 cd ../image
 
-filename="fsl-image*.sdcard"
-current_filename=`ls | grep fsl-image*.sdcard`
+filename=`ls | grep sdcard`
 
-if [ -e $filename ];then
-    echo "[Copy $current_filename image]"
-    dd if=$current_filename of=$1 &>/dev/null
+if [ $filename ];then
+    echo "[Copy $filename image]"
+    dd if=$filename of=$1 &>/dev/null
 else
-    echo $filename does not exist
+    echo No such Image file
     exit 1
 fi
 echo "[Resize filesystems...]"
@@ -46,7 +45,6 @@ d
 2
 n
 p
-2
 $rootfs_start
 
 w
