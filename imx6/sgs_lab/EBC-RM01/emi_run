@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PROJECT=`cat /proc/board | cut -c 1-8`
+echo "Run For ${PROJECT}"
+
+sleep 3
+
+#OTG
+/tools/emi_otg.sh &
+
+#USB
+/tools/emi_usb.sh &
+
