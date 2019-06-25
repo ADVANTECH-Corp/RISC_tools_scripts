@@ -43,9 +43,11 @@
 /tools/emi_hdmi.sh &
 
 #USB
-#/tools/emi_usb.sh &
+/tools/emi_usb.sh &
 
 #OTG
 #/tools/emi_otg.sh &
 
+#SD
+/tools/emi_sd.sh &
 
