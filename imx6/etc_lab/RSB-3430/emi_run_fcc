@@ -40,11 +40,11 @@ echo "pop string"
 #/tools/emi_audio.sh &
 
 #USB
-/tools/emi_usb.sh &
+/tools/emi_usb.sh 4 &
 
 #OTG
 #/tools/emi_otg.sh &
 
 #SD
-/tools/emi_sd.sh &
+/tools/emi_sd.sh mmcblk1 &
 

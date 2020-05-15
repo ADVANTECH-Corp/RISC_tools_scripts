@@ -1,24 +1,34 @@
-#!/bin/bash
-USBTYPE=( "USB-1" "USB-2" )
-USBBUS=( "1-1.1/1-1.1:1.0" "1-1.2/1-1.2:1.0" )
-USBDEV=""
+#!/bin/sh
+
+USBDEV=( "sda" "sdb" "sdc" "sdd" "sde" "sdf" )
+USBNUM=$1
 SIZE=${SIZE:=1024}
 
-dd if=/dev/urandom of=/data bs=1 count=$SIZE &>/dev/null
+dd if=/dev/urandom of=/tmp/data_usb bs=1 count=$SIZE &>/dev/null
+
 while true
 do
-	for N in 0 1; do
-	  SYSBUS="/sys/devices/soc0/soc/2100000.aips-bus/2184000.usb/ci_hdrc.0/usb1/1-1/${USBBUS[N]}/host*/target*:0:0/*:0:0:0/block"
-	  USBDEV=`ls $SYSBUS 2>/dev/null`
-	  if [ "$USBDEV" == "" ]; then echo "${USBTYPE[N]} not detected"; continue; fi
+	if [ "$#" -ne 1 ]; then
+                echo "Please input 1 argument!"
+                exit
+        fi
 
-	  echo "${USBTYPE[N]} Reading"
-	  dd if=/dev/$USBDEV of=/dataX bs=1 count=$SIZE skip=4096 &>/dev/null 
+	for ((N=0;N<$USBNUM;N++))
+	do
+		dd if=/dev/${USBDEV[N]} of=/tmp/data_${USBDEV[N]}_bak bs=1 count=$SIZE skip=4096 &>/dev/null
+		if [ -e "/tmp/data_${USBDEV[N]}_bak" ]; then
+			rm /tmp/data_${USBDEV[N]}_bak
+			sync
+		else
+			echo "USB:/dev/${USBDEV[N]} Read fail"
+			sleep 1
+			continue
+		fi
 
-	  echo "${USBTYPE[N]} Writing"
-	  dd if=/data of=/dev/$USBDEV bs=1 seek=4096 &>/dev/null
+		dd if=/tmp/data_usb of=/dev/${USBDEV[N]} bs=1 seek=4096 &>/dev/null
 
-	sleep 1
+		echo "USB:/dev/${USBDEV[N]} Read/Write OK"
+
+		sleep 1
 	done
-	rm /dataX
 done
