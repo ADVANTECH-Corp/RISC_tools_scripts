@@ -24,17 +24,13 @@ umount $1* &> /dev/null
 echo "[Partitioning $1...]"
 DRIVE=$1
 
-if [ -d "/image" ];then
-	cd /image
-else
-	echo "No image folder, try to get file in this folder"	
-fi
+cd ../image
 
 filename=`ls | grep sdcard`
 
 if [ $filename ];then
     echo "[Copy $filename image]"
-    bzcat $filename | dd of=$1 &>/dev/null
+    dd if=$filename of=$1 &>/dev/null
 else
     echo No such Image file
     exit 1
@@ -49,13 +45,10 @@ d
 2
 n
 p
-2
 $rootfs_start
 
 w
 EOF
-
-umount $1* &> /dev/null
 
 if [ -x /sbin/partprobe ]; then
     /sbin/partprobe ${DRIVE} &> /dev/null
