@@ -1,0 +1,10 @@
+#!/bin/sh
+#Hpattern
+/tools/dupchar.sh &
+
+sleep 1
+
+#USB
+/tools/emi_usb.sh &
+
+

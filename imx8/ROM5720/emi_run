@@ -1,0 +1,10 @@
+#!/bin/sh
+
+/tools/emi_hdmi.sh &
+
+sleep 1
+
+#USB
+/tools/emi_usb.sh &
+
+
