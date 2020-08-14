@@ -9,6 +9,10 @@ case $SOC in
 		echo "[iMX8MM] Make imx-boot"
 		make SOC=iMX8M flash_evk	
 	;;
+	"imx8mp")
+		echo "[iMX8MP] Make imx-boot"
+		make SOC=iMX8MP flash_evk	
+	;;
 	"imx8qxp")
 		echo "[iMX8MM] Make imx-boot"
 		make SOC=iMX8QX flash
@@ -18,7 +22,7 @@ case $SOC in
 		make SOC=iMX8QM flash
 	;;
 	*)
-		echo "parameter2 must be imx8mm, imx8m, imx8qxp, imx8qm"
+		echo "parameter2 must be imx8mm, imx8mp, imx8m, imx8qxp, imx8qm"
 	;;
 esac
 	
