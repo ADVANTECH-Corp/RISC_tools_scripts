@@ -95,6 +95,7 @@ mount ${node}${part}2 mount_point0/ &> /dev/null
 rm -fr mount_point0/*
 echo "copy [rootfs]"
 tar -xvf ../image/rootfs.tar.bz2 -C mount_point0/ &> /dev/null
+sed -i "/cache/d" mount_point0/etc/fstab  # remove cache partition setting
 sync
 umount ${node}${part}2
 rmdir mount_point0

@@ -110,7 +110,7 @@ rm -fr mount_point0/*
 echo "copy [rootfs]"
 tar -jxvf ../image/rootfs.tar.bz2 -C mount_point0/ &> /dev/null
 #cp -fr ../Factory_Test/* mount_point0/home/root/ &> /dev/null
-
+sed -i "/cache/d" mount_point0/etc/fstab  # remove cache partition setting 
 
 if [ 1 -eq 1 ];then
 # for emmc update usage
