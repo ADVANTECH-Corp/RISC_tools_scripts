@@ -2,9 +2,15 @@
 
 Test emi OS: Linux Yocto 2.1
 
-ENI  CE  (HDMI  colorbar + VGA  colorbar)
+ssh link 
+ip address
+       address 192.168.0.1
+       netmask 255.255.255.0
 
-1. Diaplay H pattern for EMI FCC test.
+-----------------------------------------------------------------
+EMI  CE  (HDMI  colorbar + VGA  colorbar)
+
+1. Display colorbar  for EMI CE test.
    (1) check id is 5. 
        path: vi /etc/inittab
        # The default runlevel.
@@ -25,6 +31,7 @@ ENI  CE  (HDMI  colorbar + VGA  colorbar)
     root@imx6qrsb4411a1:~# cd /
     root@imx6qrsb4411a1:/# /tools/emi_run_ce
 
+-------------------------------------------------------------------
 EMI FCC  (HDMI  H pattern + VGA  colorbar)
 
 1. Diaplay H pattern for EMI FCC test.
