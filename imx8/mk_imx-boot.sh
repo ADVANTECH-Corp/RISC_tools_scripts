@@ -6,7 +6,7 @@ case $SOC in
 		make SOC=iMX8MM flash_evk	
 	;;
 	"imx8m")
-		echo "[iMX8MM] Make imx-boot"
+		echo "[iMX8MQ] Make imx-boot"
 		make SOC=iMX8M flash_evk	
 	;;
 	"imx8mp")
@@ -14,11 +14,11 @@ case $SOC in
 		make SOC=iMX8MP flash_evk	
 	;;
 	"imx8qxp")
-		echo "[iMX8MM] Make imx-boot"
+		echo "[iMX8QXP] Make imx-boot"
 		make SOC=iMX8QX flash
 	;;
 	"imx8qm")
-		echo "[iMX8MM] Make imx-boot"
+		echo "[iMX8QM] Make imx-boot"
 		make SOC=iMX8QM flash
 	;;
 	*)

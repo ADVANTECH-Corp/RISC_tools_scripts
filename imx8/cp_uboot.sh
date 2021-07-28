@@ -11,7 +11,7 @@ case $SOC in
 	"imx8m")
 		echo "Copy files to [iMX8M]"
 		cp $UBOOT_PATH/u-boot-nodtb.bin iMX8M/u-boot-nodtb.bin
-		cp $UBOOT_PATH/u-boot.dtb iMX8M/imx8m-evk.dtb
+		cp $UBOOT_PATH/u-boot.dtb iMX8M/imx8mq-evk.dtb
 		cp $UBOOT_PATH/spl/u-boot-spl.bin iMX8M/u-boot-spl.bin
 	;;
 	"imx8mp")
