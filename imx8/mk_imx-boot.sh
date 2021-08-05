@@ -15,7 +15,7 @@ case $SOC in
 	;;
 	"imx8qxp")
 		echo "[iMX8QXP] Make imx-boot"
-		make SOC=iMX8QX flash
+		make SOC=iMX8QX REV=C0 flash
 	;;
 	"imx8qm")
 		echo "[iMX8QM] Make imx-boot"
