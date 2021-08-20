@@ -35,7 +35,7 @@ echo "[Create Container]"
 sudo docker run -d --privileged -it --name $CON_NAME -v $PWD/workspace:/home/adv/adv-release-bsp -v /dev:/dev advrisc/u18.04-imx8lbv1 /bin/bash
 sudo docker exec work bash -c " sudo chown adv:adv adv-release-bsp;
 				cd adv-release-bsp; 
-				repo init -u git://github.com/ADVANTECH-Corp/adv-arm-yocto-bsp.git  -b imx-linux-zeus -m imx-5.4.24-2.1.0.xml;  
+				repo init -u git://github.com/ADVANTECH-Corp/adv-arm-yocto-bsp.git  -b imx-linux-hardknott -m imx-5.10.35-2.0.0.xml;  
 				repo sync;
 				EULA=1 DISTRO=fsl-imx-xwayland MACHINE=$PRODUCT source imx-setup-release.sh -b build-xwayland;
 				bitbake $IMAGE
