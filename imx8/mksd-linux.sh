@@ -26,7 +26,7 @@ DRIVE=$1
 
 cd ../image
 
-filename=`ls | grep wic`
+filename=`ls | grep sdcard`
 
 if [ $filename ];then
     echo "[Copy $filename image]"
