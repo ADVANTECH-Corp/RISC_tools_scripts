@@ -8,6 +8,52 @@ ip address
        netmask 255.255.255.0
 
 -----------------------------------------------------------------
+Quick Test Step (EMI  CE)
+
+1. Login
+   root@imx6qrsb4411a1 login: root
+
+2. Modify run-level
+   root@imx6qrsb4411a1:~# sed -i '/id:/cid:5:initdefault:' /etc/inittab
+
+3. U-boot env setting
+   root@imx6qrsb4411a1:~# fw_setenv mmcargs 'setenv bootargs console=${console},${baudrate} ${smp} root=${mmcroot} ${bootargs}'
+   root@imx6qrsb4411a1:~# sync
+
+4. System restart
+
+5. Login again
+   root@imx6qrsb4411a1 login: root
+
+6. Run CE test
+   root@imx6qrsb4411a1:~# cd /
+   root@imx6qrsb4411a1:/# /tools/emi_run_ce
+
+-----------------------------------------------------------------
+Quick Test Step (EMI  FCC)
+
+1. Login
+   root@imx6qrsb4411a1 login: root
+
+2. Modify run-level
+   root@imx6qrsb4411a1:~# sed -i '/id:/cid:3:initdefault:' /etc/inittab
+
+3. U-boot env setting
+   root@imx6qrsb4411a1:~# fw_setenv mmcargs 'setenv bootargs console=${console},${baudrate} console=tty0 ${smp} root=${mmcroot} ${bootargs}'
+   root@imx6qrsb4411a1:~# sync
+
+4. System restart
+
+5. Login again
+   root@imx6qrsb4411a1 login: root
+
+6. Run FCC test
+   root@imx6qrsb4411a1:~# cd /
+   root@imx6qrsb4411a1:/# /tools/emi_run_fcc
+
+7. Connect the USB Keyboard and key "Ctrl + Alt + F1" to display console in HDMI.
+
+-----------------------------------------------------------------
 EMI  CE  (HDMI  colorbar + VGA  colorbar)
 
 1. Display colorbar  for EMI CE test.
