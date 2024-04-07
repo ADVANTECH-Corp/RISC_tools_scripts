@@ -13,7 +13,9 @@ case $SOC in
 		cp $UBOOT_PATH/u-boot-nodtb.bin iMX8M/u-boot-nodtb.bin
 		cp $UBOOT_PATH/u-boot.dtb iMX8M/fsl-imx8m-evk.dtb
 		cp $UBOOT_PATH/spl/u-boot-spl.bin iMX8M/u-boot-spl.bin
-	;;
+		cp $UBOOT_PATH/tools/mkimage iMX8M/mkimage_uboot
+		rm -rf iMX8M/mkimage_imx8
+		;;
 	"imx8qxp")
 		echo "Copy files to [iMX8QX]"
 		cp $UBOOT_PATH/u-boot.bin iMX8QX/
